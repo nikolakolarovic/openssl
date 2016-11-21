@@ -13,11 +13,13 @@ perl -pi -e 's/install: all install_docs install_sw/install: install_docs instal
 make depend
 make all
 
-cp -vf libcrypto.so $ANDROID_PRODUCT_OUT/system/lib
-$ANDROID_TOOLCHAIN/${CROSS_COMPILE}strip -v $ANDROID_PRODUCT_OUT/system/lib/libcrypto.so
 cp -vf libcrypto.so $ANDROID_PRODUCT_OUT/symbols/system/lib
+$ANDROID_TOOLCHAIN/${CROSS_COMPILE}strip -v libcrypto.so
+cp -vf libcrypto.so $ANDROID_PRODUCT_OUT/system/lib
+cp -vf libcrypto.so $ANDROID_PRODUCT_OUT/obj/lib
 
-cp -vf libssl.so $ANDROID_PRODUCT_OUT/system/lib
-$ANDROID_TOOLCHAIN/${CROSS_COMPILE}strip -v $ANDROID_PRODUCT_OUT/system/lib/libssl.so
 cp -vf libssl.so $ANDROID_PRODUCT_OUT/symbols/system/lib
+$ANDROID_TOOLCHAIN/${CROSS_COMPILE}strip -v libssl.so
+cp -vf libssl.so $ANDROID_PRODUCT_OUT/system/lib
+cp -vf libssl.so $ANDROID_PRODUCT_OUT/obj/lib
 
