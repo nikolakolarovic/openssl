@@ -16,10 +16,15 @@ make CALC_VERSIONS="SHLIB_COMPAT=; SHLIB_SOVER=" all -j8
 cp -vf libcryptoscsa.so $ANDROID_PRODUCT_OUT/symbols/system/lib/
 $ANDROID_TOOLCHAIN/${CROSS_COMPILE}strip -v libcryptoscsa.so
 cp -vf libcryptoscsa.so $ANDROID_PRODUCT_OUT/system/lib/
-cp -vf libcrypto.so $ANDROID_PRODUCT_OUT/obj/lib/
+cp -vf libcryptoscsa.so $ANDROID_PRODUCT_OUT/obj/lib/
 
 cp -vf libsslscsa.so $ANDROID_PRODUCT_OUT/symbols/system/lib/
 $ANDROID_TOOLCHAIN/${CROSS_COMPILE}strip -v libsslscsa.so
 cp -vf libsslscsa.so $ANDROID_PRODUCT_OUT/system/lib/
 cp -vf libsslscsa.so $ANDROID_PRODUCT_OUT/obj/lib/
 
+mkdir -p $ANDROID_PRODUCT_OUT/obj/SHARED_LIBRARIES/libcryptoscsa_intermediates
+touch $ANDROID_PRODUCT_OUT/obj/SHARED_LIBRARIES/libcryptoscsa_intermediates/export_includes
+
+mkdir -p $ANDROID_PRODUCT_OUT/obj/SHARED_LIBRARIES/libsslscsa_intermediates
+touch $ANDROID_PRODUCT_OUT/obj/SHARED_LIBRARIES/libsslscsa_intermediates/export_includes
